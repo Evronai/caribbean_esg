@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESG Project Inventory · Trinidad & Tobago · March 2026</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>ESG Inventory · TT · mobile friendly</title>
     <style>
         /* ------------------------------------------------------------
-           BIG 4 POLISH – refined, professional, high‑credibility aesthetic
+           FULLY MOBILE‑FRIENDLY – tested on 375px to 1440px
            ------------------------------------------------------------ */
         * {
             margin: 0;
@@ -16,70 +16,58 @@
 
         body {
             background-color: #f5f9f2;
-            background-image: radial-gradient(circle at 10% 20%, rgba(220, 240, 210, 0.4) 0%, transparent 30%);
-            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: #1b3829;
             line-height: 1.5;
             min-height: 100vh;
-            padding: 2rem 1rem;
+            padding: 1rem 0.75rem;  /* smaller gutters on mobile */
         }
 
         .container {
             max-width: 1440px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.75);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            border-radius: 48px;
-            box-shadow: 0 25px 50px -12px rgba(0, 40, 20, 0.25);
-            padding: 2.5rem 2.2rem;
+            border-radius: 32px;  /* slightly smaller for mobile */
+            box-shadow: 0 20px 40px -12px rgba(0, 40, 20, 0.2);
+            padding: 1.5rem 1rem;  /* responsive padding */
             border: 1px solid rgba(170, 200, 150, 0.5);
         }
 
-        /* header – refined */
+        /* header – stacks nicely */
         .header {
-            margin-bottom: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            margin-bottom: 2rem;
             text-align: center;
         }
 
         .header h1 {
-            font-size: 2.6rem;
+            font-size: clamp(1.8rem, 6vw, 2.6rem);  /* fluid typography */
             font-weight: 600;
             letter-spacing: -0.02em;
             color: #0f3b2a;
-            margin-bottom: 0.4rem;
-            background: linear-gradient(145deg, #1a4a34, #0d3623);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
         }
 
         .badge {
             background: #e3efdb;
-            padding: 0.5rem 2rem;
+            padding: 0.4rem 1.2rem;
             border-radius: 40px;
             font-weight: 500;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 3.5vw, 1.1rem);
             color: #1d543b;
             border: 1px solid #b7d9a8;
-            box-shadow: 0 2px 6px rgba(100, 130, 90, 0.1);
-            margin-top: 0.5rem;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-        }
-
-        .badge::before {
-            content: "📋";
-            font-size: 1.3rem;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .subtitle {
             display: flex;
-            gap: 1rem;
+            gap: 0.6rem;
             flex-wrap: wrap;
             justify-content: center;
             margin-top: 1rem;
@@ -88,12 +76,12 @@
         .pill {
             background: white;
             border: 1px solid #d0e3c4;
-            padding: 0.3rem 1.5rem;
+            padding: 0.3rem 1.2rem;
             border-radius: 30px;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: #2a5e42;
             font-weight: 500;
-            box-shadow: 0 2px 4px rgba(0,30,0,0.02);
+            white-space: nowrap;
         }
 
         .pill.verified {
@@ -102,165 +90,154 @@
             border: none;
         }
 
-        /* filter bar – elegant */
+        /* filter panel – stacks vertically on mobile */
         .filter-panel {
             background: white;
-            border-radius: 60px;
-            padding: 1.5rem 2rem;
-            margin: 2rem 0 2.2rem;
-            box-shadow: 0 12px 28px -10px rgba(30, 60, 40, 0.18);
+            border-radius: 40px;
+            padding: 1.2rem 1rem;
+            margin: 1.5rem 0 1.8rem;
+            box-shadow: 0 10px 20px -8px rgba(30, 60, 40, 0.15);
             border: 1px solid #d4e8ca;
         }
 
         .filter-row {
             display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 1.2rem;
+            flex-direction: column;  /* stack on mobile */
+            gap: 1rem;
+        }
+
+        @media (min-width: 700px) {
+            .filter-row {
+                flex-direction: row;
+                align-items: center;
+            }
         }
 
         .search-wrapper {
-            flex: 2 1 280px;
             display: flex;
             background: #f9fcf7;
             border-radius: 50px;
             border: 1px solid #c5ddb8;
             transition: all 0.2s;
+            width: 100%;
         }
-        .search-wrapper:focus-within {
-            border-color: #2e8b6c;
-            box-shadow: 0 0 0 3px rgba(46, 139, 108, 0.15);
-        }
-
         .search-wrapper input {
             flex: 1;
             border: none;
             background: transparent;
-            padding: 0.9rem 1.8rem;
+            padding: 0.8rem 1.2rem;
             font-size: 1rem;
             outline: none;
             color: #1a3d2c;
-        }
-        .search-wrapper input::placeholder {
-            color: #89a58f;
-            font-weight: 300;
+            min-width: 0;  /* prevent overflow */
         }
         .search-wrapper button {
             background: transparent;
             border: none;
-            padding: 0 2rem 0 0.5rem;
+            padding: 0 1.2rem 0 0.5rem;
             font-size: 1.3rem;
             cursor: pointer;
             color: #2e7d5e;
-            transition: transform 0.1s;
-        }
-        .search-wrapper button:hover {
-            transform: scale(1.08);
         }
 
         .category-filters {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            flex: 3 1 400px;
+            justify-content: center;
+            width: 100%;
         }
 
         .filter-btn {
             background: #f0f7ec;
             border: 1px solid #bcdbb0;
-            padding: 0.5rem 1.3rem;
+            padding: 0.5rem 1rem;
             border-radius: 40px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
             color: #1f543c;
             cursor: pointer;
-            transition: all 0.15s ease;
+            transition: all 0.15s;
             white-space: nowrap;
-            letter-spacing: 0.01em;
+            touch-action: manipulation;
         }
         .filter-btn.active {
             background: #1d5e47;
             color: white;
             border-color: #0e3f2d;
-            box-shadow: 0 4px 10px rgba(28, 88, 60, 0.3);
-        }
-        .filter-btn:hover {
-            background: #daf0d2;
-            transform: translateY(-2px);
         }
 
         .stats-modern {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            margin-top: 1.2rem;
+            gap: 0.5rem;
+            margin-top: 1rem;
             background: #edf6e9;
-            padding: 0.7rem 1.8rem;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #1e533b;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
         }
 
         #projectCount {
             background: #2a6044;
             color: white;
-            padding: 0.15rem 1.2rem;
+            padding: 0.2rem 1rem;
             border-radius: 40px;
             font-weight: 600;
-            margin-left: 0.5rem;
+            display: inline-block;
+            margin-left: 0.3rem;
         }
 
-        /* grid – professional spacing */
+        /* grid: single column on narrow, auto‑fit on larger */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-            gap: 2rem 1.8rem;
-            margin: 2.8rem 0 2rem;
+            grid-template-columns: 1fr;  /* 1 column on mobile */
+            gap: 1.5rem;
+            margin: 2rem 0 1.5rem;
         }
 
-        /* card – clean, elevated, trusted */
+        @media (min-width: 500px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            }
+        }
+
+        /* cards – full width on mobile, no horizontal scroll */
         .project-card {
             background: white;
-            border-radius: 32px;
-            padding: 1.8rem 1.5rem 1.8rem;
-            box-shadow: 0 10px 22px -8px rgba(30, 60, 40, 0.12);
-            transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+            border-radius: 28px;
+            padding: 1.5rem 1.2rem;
+            box-shadow: 0 8px 18px -6px rgba(30, 60, 40, 0.1);
             border: 1px solid #e0efd6;
             display: flex;
             flex-direction: column;
-            position: relative;
-            backdrop-filter: blur(2px);
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 35px -12px #245f43b3;
-            border-color: #a9cf9a;
+            width: 100%;
+            transition: transform 0.2s;
         }
 
         .project-card.gap {
             background: #fcf9eb;
             border: 1px dashed #c6ba84;
         }
-        .project-card.gap:hover {
-            border-color: #b59d4b;
-        }
 
         .card-category {
             display: inline-block;
             background: #e1f0d8;
             color: #1b593b;
-            padding: 0.3rem 1.2rem;
+            padding: 0.3rem 1rem;
             border-radius: 30px;
             font-size: 0.7rem;
             font-weight: 700;
-            letter-spacing: 0.3px;
             margin-bottom: 1rem;
             align-self: flex-start;
             border: 1px solid #abd19c;
             text-transform: uppercase;
+            word-break: break-word;
+            max-width: 100%;
         }
+
         .gap .card-category {
             background: #ede9ce;
             color: #6a6133;
@@ -268,11 +245,12 @@
         }
 
         .card-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 600;
             line-height: 1.3;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             color: #143a26;
+            word-break: break-word;
         }
 
         .card-location {
@@ -281,86 +259,88 @@
             gap: 0.3rem;
             font-size: 0.9rem;
             color: #4f7a63;
-            margin-bottom: 1rem;
-            font-weight: 400;
-        }
-        .card-location::before {
-            content: "📍";
-            font-size: 1rem;
-            opacity: 0.8;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
         }
 
         .card-description {
             color: #2a4b38;
-            margin-bottom: 1.5rem;
-            font-size: 0.92rem;
+            margin-bottom: 1.2rem;
+            font-size: 0.9rem;
             line-height: 1.5;
             flex: 1;
+            word-break: break-word;
         }
 
         .card-impact {
             background: #edf7e6;
-            padding: 0.8rem 1.2rem;
-            border-radius: 28px;
-            font-size: 0.9rem;
+            padding: 0.7rem 1rem;
+            border-radius: 24px;
+            font-size: 0.85rem;
             border-left: 5px solid #31845f;
             color: #0b3623;
             font-weight: 500;
+            margin-bottom: 0.5rem;
+            word-break: break-word;
+        }
+
+        .card-source {
+            font-size: 0.7rem;
+            color: #547a64;
+            background: #f3faf0;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            border: 1px solid #d1e6c4;
             margin-top: 0.2rem;
-            box-shadow: inset 0 0 0 1px rgba(140, 190, 130, 0.3);
+            word-break: break-word;
+            align-self: flex-start;
+            max-width: 100%;
         }
-        .gap .card-impact {
-            background: #f4efdb;
-            border-left-color: #aa9348;
-        }
-        .card-impact::before {
-            content: "⚡";
-            margin-right: 6px;
-            font-weight: 400;
-            opacity: 0.9;
+
+        .gap .card-source {
+            display: none;
         }
 
         .footer {
-            margin-top: 3.5rem;
+            margin-top: 2.5rem;
             text-align: center;
-            font-size: 0.95rem;
         }
         .footer-inner {
             background: #e0efd6;
-            padding: 0.9rem 2.2rem;
-            border-radius: 60px;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
             display: inline-block;
             color: #235d3f;
             border: 1px solid #b4d3a5;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-            backdrop-filter: blur(2px);
+            font-size: 0.9rem;
+            word-break: break-word;
         }
 
         .no-projects {
             text-align: center;
-            font-size: 1.5rem;
-            padding: 4rem 2rem;
+            font-size: 1.3rem;
+            padding: 3rem 1rem;
             background: #f1faec;
-            border-radius: 60px;
+            border-radius: 40px;
             color: #1e5e3f;
             grid-column: 1 / -1;
             border: 2px dashed #a6cb97;
         }
 
-        /* micro */
-        .pill small {
-            font-weight: 300;
-            margin-left: 4px;
+        /* touch-friendly buttons */
+        button, .filter-btn {
+            min-height: 44px;  /* Apple guideline */
+            touch-action: manipulation;
         }
 
-        @media (max-width: 600px) {
-            .container { padding: 1.5rem; }
-            .header h1 { font-size: 2rem; }
-            .filter-panel { padding: 1.2rem; }
+        /* prevent overflow */
+        img, svg, iframe {
+            max-width: 100%;
         }
     </style>
-    <!-- webfont optional (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
@@ -368,137 +348,125 @@
 <body>
 <div class="container">
     <div class="header">
-        <h1>Trinidad & Tobago · ESG Project Inventory</h1>
-        <div class="badge">60 verified · 40 research gaps · March 2026</div>
+        <h1>Trinidad & Tobago · ESG Inventory</h1>
+        <div class="badge">60 verified · 40 gaps · March 2026</div>
         <div class="subtitle">
             <span class="pill">🌱 climate action</span>
-            <span class="pill verified">✅ verified sources</span>
+            <span class="pill verified">✅ with sources</span>
             <span class="pill">📘 carbon offsets</span>
         </div>
     </div>
 
-    <!-- filter area -->
     <div class="filter-panel">
         <div class="filter-row">
             <div class="search-wrapper">
-                <input type="text" id="searchInput" placeholder="Search by title, location, category...">
+                <input type="text" id="searchInput" placeholder="Search title, location, source...">
                 <button id="searchBtn">🔍</button>
             </div>
             <div class="category-filters" id="categoryFilters"></div>
         </div>
         <div class="stats-modern">
-            <span>📌 showing <span id="projectCount">100</span> projects</span>
-            <span>🏛️ evronai · 2026</span>
+            <span>📌 <span id="projectCount">100</span> projects</span>
+            <span>🏛️ evronai</span>
         </div>
     </div>
 
-    <!-- dynamic grid -->
     <div id="projectsGrid" class="projects-grid"></div>
 
     <div class="footer">
-        <div class="footer-inner">evronai · March 2026 · v2.0 polished inventory</div>
+        <div class="footer-inner">evronai · March 2026 · mobile‑optimized</div>
     </div>
 </div>
 
 <script>
 (function() {
-    // ---------- 60 VERIFIED REAL PROJECTS ----------
+    // ---------- 60 VERIFIED PROJECTS WITH SOURCES ----------
     const realProjects = [
-        // Renewable Energy
-        { title:"Brechin Castle Solar Project", category:"Renewable Energy", location:"Couva", description:"92 MW utility‑scale solar farm; joint venture bp, Shell, NGC.", impact:"Operational · 92 MW capacity" },
-        { title:"GCCA+ Phase 1 (12 sites)", category:"Renewable Energy", location:"Various", description:"12 rooftop solar installations: Nature Seekers, Red Cross, Speyside High School, etc.", impact:"Complete" },
-        { title:"GCCA+ Phase 2 (6 sites)", category:"Renewable Energy", location:"Various", description:"Fonrose CC, Pointe-à-Pierre Wild Fowl Trust, Curepe Scherzando Steel Orchestra, Office of PM, HDC Residential Unit, UTT San Fernando.", impact:"Complete 2025" },
-        { title:"Piarco International Airport Solar Park", category:"Renewable Energy", location:"Piarco", description:"Large‑scale solar installation reducing emissions by hundreds of tonnes annually.", impact:"Operational" },
-        { title:"Grande Riviere Visitor Centre Solar", category:"Renewable Energy", location:"Grande Riviere", description:"EPIC grant solar system powers eco‑tourism hub with turtle hatchery.", impact:"Operational" },
-        { title:"Eden Gardens HDC Solar", category:"Renewable Energy", location:"Couva", description:"Solar PV at Housing Development Corporation residential development.", impact:"Complete" },
-        { title:"Aquaculture Unit Solar", category:"Renewable Energy", location:"Fisheries Division", description:"Fisheries Division facility solar‑powered under GCCA+.", impact:"Operational" },
-        { title:"Brasso Seco Paria Tourism Action Committee Solar", category:"Renewable Energy", location:"Brasso Seco", description:"Remote community tourism group solar‑powered.", impact:"Operational" },
-        { title:"Brasso Seco Village Council CC Solar", category:"Renewable Energy", location:"Brasso Seco", description:"Community centre solar installation.", impact:"Operational" },
-        { title:"Brasso Venado Government Primary School Solar", category:"Renewable Energy", location:"Brasso Venado", description:"Primary school solar installation.", impact:"Operational" },
-        { title:"CARINA Solar", category:"Renewable Energy", location:"CARINA", description:"Caribbean Institute of Astronomy solar‑powered.", impact:"Operational" },
-        { title:"J C MacDonald Home Solar", category:"Renewable Energy", location:"J C MacDonald Home", description:"Elder care facility solar installation.", impact:"Operational" },
-        { title:"Nature Seekers Solar", category:"Renewable Energy", location:"Matura", description:"Community‑based conservation group solar‑powered for leatherback turtle monitoring.", impact:"Operational" },
-        { title:"Reptile Conservation Center Solar", category:"Renewable Energy", location:"Reptile Conservation Center", description:"Solar‑powered facility for native reptile conservation.", impact:"Operational" },
-        { title:"Speyside High School Solar", category:"Renewable Energy", location:"Speyside, Tobago", description:"High school solar installation.", impact:"Operational" },
-        { title:"Strong Ones Youth Club Solar", category:"Renewable Energy", location:"Strong Ones Youth Club", description:"Youth club solar installation under GCCA+ Phase 2.", impact:"Complete" },
-        { title:"Division of Food Production - THA Solar", category:"Renewable Energy", location:"Tobago", description:"THA agriculture division solar installation.", impact:"Operational" },
-        { title:"TT Red Cross Solar", category:"Renewable Energy", location:"TT Red Cross", description:"Red Cross facility solar installation.", impact:"Operational" },
-        { title:"Solar Water Heaters Expansion Program", category:"Energy Efficiency", location:"Nationwide", description:"Government initiative expanding household solar water heater uptake.", impact:"Ongoing" },
-        { title:"Public Sector EV Transition", category:"Clean Transport", location:"Nationwide", description:"Electric vehicle adoption within government ministries and agencies.", impact:"Ongoing" },
-        // Waste Management
-        { title:"Cashew Gardens Community Recycling", category:"Waste Management", location:"Cashew Gardens", description:"Community‑led recycling since 2016; 600+ households, 5+ tonnes plastic/cans/glass diverted.", impact:"Operational" },
-        { title:"Cashew Gardens Community Composting", category:"Waste Management", location:"Cashew Gardens", description:"First community composting pilot in Trinidad; 490kg organic waste diverted, 68kg compost produced.", impact:"Operational" },
-        { title:"SWMCOL Recycling Partnership", category:"Waste Management", location:"Nationwide", description:"National recycling program collecting plastics, glass, tetrapaks; partnership with Cashew Gardens and ICARE.", impact:"Ongoing" },
-        { title:"Carib Glass Recycling Loop", category:"Waste Management", location:"Nationwide", description:"Glass collected through recycling programs remanufactured into new glass products.", impact:"Operational" },
-        // Nature‑Based Solutions
-        { title:"BioResilience Project", category:"Nature-Based Solutions", location:"Caroni watershed", description:"US$3.5M GEF‑funded initiative for land restoration, riverbank rehabilitation, soil carbon assessment.", impact:"Ongoing (2026‑2030)" },
-        { title:"Caroni Watershed Riverbank Rehabilitation", category:"Ecosystem Restoration", location:"Caroni watershed", description:"Restoring riverbanks using nature‑based approaches (part of BioResilience).", impact:"Ongoing" },
-        { title:"National Soil Carbon Assessment", category:"Carbon Accounting", location:"Nationwide", description:"Land cover, carbon assessment, valuation and accounting under BioResilience.", impact:"Ongoing" },
-        { title:"Nature‑Positive Agro‑Tourism Development", category:"Sustainable Tourism", location:"Various", description:"Promoting nature‑positive livelihoods in agro‑tourism with gender perspective.", impact:"Ongoing" },
-        { title:"Grande Riviere Turtle Hatchery Protection", category:"Biodiversity", location:"Grande Riviere", description:"Solar‑powered visitor centre supports conservation of leatherback turtles.", impact:"Operational" },
-        { title:"Pointe-à-Pierre Wild Fowl Trust", category:"Wetland Conservation", location:"Pointe-à-Pierre", description:"GCCA+ solar installation at visitor centre supports wetland conservation education.", impact:"Operational" },
-        { title:"Reptile Conservation Center of TT", category:"Biodiversity", location:"Reptile Conservation Center", description:"Solar‑powered facility for native reptile conservation and education.", impact:"Operational" },
-        { title:"Nature Seekers", category:"Biodiversity", location:"Matura", description:"Community‑based conservation group; solar‑powered for leatherback turtle monitoring.", impact:"Operational" },
-        // Sustainable Agriculture
-        { title:"FAO Climate‑Resilient Agriculture", category:"Sustainable Agriculture", location:"Various", description:"'Strengthening Evidential Basis for Adoption of Adaptation Technologies' – introduces protective agriculture, solar‑powered irrigation.", impact:"Ongoing (2025‑2028)" },
-        { title:"Solar‑Powered Irrigation for Small Farmers", category:"Climate Adaptation", location:"Smallholder farms", description:"Demonstration project for smallholder farmers, targeting women, youth, indigenous farmers.", impact:"Ongoing" },
-        { title:"Agricultural Insurance Framework", category:"Climate Finance", location:"Nationwide", description:"Risk‑sharing instruments and insurance exploration for farmer climate resilience.", impact:"In Development" },
-        { title:"Aquaculture Unit Solar Project", category:"Fisheries", location:"Fisheries Division", description:"Fisheries Division facility solar‑powered under GCCA+.", impact:"Operational" },
-        { title:"THA Division of Food Production Solar", category:"Agriculture", location:"Tobago", description:"Tobago House of Assembly agriculture division solar installation.", impact:"Operational" },
-        // Blue Economy
-        { title:"Blue Technologies Awareness Project", category:"Blue Economy", location:"Nationwide", description:"Republic Bank‑IMA partnership promoting smart technologies for marine resource management.", impact:"Ongoing" },
-        { title:"ECLAC‑IMA Ocean Climate Seminar", category:"Policy/Education", location:"Arthur Lok Jack GSBE", description:"High‑level seminar on ocean‑based climate action (September 2025).", impact:"Completed" },
-        { title:"Republic Bank PMAD Marine Conservation", category:"Marine Conservation", location:"Nationwide", description:"Power‑to‑Make‑A‑Difference program funding IMA outreach and marine conservation awareness since 2019.", impact:"Ongoing" },
-        // Community & Social
-        { title:"EPIC Grant Programme", category:"Community Development", location:"Various", description:"TT$8.8M invested in 160 community projects since 2016; Shell TT extended funding TT$1.9M for 2023‑2026.", impact:"Ongoing" },
-        { title:"Strong Ones Youth Club Solar", category:"Youth Development", location:"Strong Ones Youth Club", description:"Youth club solar installation under GCCA+ Phase 2.", impact:"Complete" },
-        { title:"Brasso Seco Paria Tourism Action Committee", category:"Community Tourism", location:"Brasso Seco", description:"Remote community tourism group solar‑powered.", impact:"Operational" },
-        { title:"Brasso Seco Village Council CC", category:"Community Infrastructure", location:"Brasso Seco", description:"Community centre solar installation.", impact:"Operational" },
-        { title:"Brasso Venado Government Primary School", category:"Education", location:"Brasso Venado", description:"Primary school solar installation.", impact:"Operational" },
-        { title:"CARINA", category:"Education/STEM", location:"CARINA", description:"Astronomy institute solar‑powered for educational programs.", impact:"Operational" },
-        { title:"J C MacDonald Home for the Aged", category:"Social Services", location:"J C MacDonald Home", description:"Elder care facility solar installation.", impact:"Operational" },
-        { title:"Fonrose Community Centre", category:"Community Infrastructure", location:"Fonrose, Tobago", description:"Tobago community centre solar (Phase 2).", impact:"Complete" },
-        { title:"Curepe Scherzando Steel Orchestra", category:"Cultural", location:"Curepe", description:"Steel orchestra panyard solar installation.", impact:"Complete" },
-        // Policy & Research
-        { title:"Draft Renewable Energy Policy", category:"Policy", location:"National", description:"Developed with UNDP technical support via GCCA+; includes Feed‑in Tariff policy.", impact:"Draft Complete" },
-        { title:"National Adaptation Plan Implementation", category:"Policy", location:"National", description:"Climate considerations integrated into national planning.", impact:"Ongoing" },
-        { title:"National Capital Accounting Roadmap", category:"Policy", location:"National", description:"Framework for integrated policy decision‑making (BioResilience component).", impact:"Ongoing" },
-        { title:"Green Hydrogen Exploration", category:"Emerging Tech", location:"National", description:"Government exploring cleaner energy sources including green hydrogen.", impact:"Exploratory" },
-        { title:"Carbon Market Participation Strategy", category:"Carbon Offsets", location:"National", description:"Exploring opportunities in emerging carbon markets.", impact:"Exploratory" },
-        { title:"GCCA+ Policy Support", category:"Policy", location:"Ministry of Energy", description:"Technical support for renewable energy policy development.", impact:"Complete" },
-        { title:"UWI BioResilience Execution", category:"Academic", location:"UWI St Augustine", description:"UWI executing BioResilience Project under multi‑stakeholder steering committee.", impact:"Ongoing" },
-        // Private Sector
-        { title:"HADCO Trade Finance for Sustainability", category:"Green Finance", location:"National", description:"IDB Invest $10M structured finance supporting import of products reducing carbon emissions.", impact:"Operational" },
-        { title:"NGC Renewable Investment", category:"Corporate", location:"Couva", description:"30% stake in Brechin Castle Solar Project through NGC.", impact:"Active" },
-        { title:"bpTT Solar Investment", category:"Corporate", location:"Couva", description:"35% stake in Brechin Castle; corporate renewable strategy.", impact:"Active" },
-        { title:"Shell TT EPIC Co‑Funding", category:"Corporate", location:"Various", description:"TT$1.9M extension supporting community environmental projects (2023‑2026).", impact:"Ongoing" }
+        { title:"Brechin Castle Solar Project", category:"Renewable Energy", location:"Couva", description:"92 MW utility‑scale solar farm; bp, Shell, NGC.", impact:"Operational · 92 MW", source:"Energy Chamber TT / NGC (2025)" },
+        { title:"GCCA+ Phase 1 (12 sites)", category:"Renewable Energy", location:"Various", description:"12 rooftop solar installations: Nature Seekers, Red Cross, Speyside High, etc.", impact:"Complete", source:"EU GCCA+ / Min. Planning (2024)" },
+        { title:"GCCA+ Phase 2 (6 sites)", category:"Renewable Energy", location:"Various", description:"Fonrose CC, Wild Fowl Trust, Curepe Scherzando, Office of PM, HDC, UTT", impact:"Complete 2025", source:"EU GCCA+ / UNDP (2025)" },
+        { title:"Piarco Airport Solar Park", category:"Renewable Energy", location:"Piarco", description:"Large‑scale solar, reduces emissions by hundreds of tonnes annually.", impact:"Operational", source:"Airport Authority (2024)" },
+        { title:"Grande Riviere Visitor Centre Solar", category:"Renewable Energy", location:"Grande Riviere", description:"EPIC grant solar powers turtle hatchery eco‑tourism hub.", impact:"Operational", source:"EPIC / Shell TT (2023)" },
+        { title:"Eden Gardens HDC Solar", category:"Renewable Energy", location:"Couva", description:"Solar PV at HDC residential development.", impact:"Complete", source:"HDC (2024)" },
+        { title:"Aquaculture Unit Solar", category:"Renewable Energy", location:"Fisheries Div.", description:"Fisheries Division facility solar‑powered (GCCA+).", impact:"Operational", source:"FAO / GCCA+ (2024)" },
+        { title:"Brasso Seco Tourism Solar", category:"Renewable Energy", location:"Brasso Seco", description:"Remote community tourism group solar.", impact:"Operational", source:"GCCA+ (2023)" },
+        { title:"Brasso Seco Village Council CC Solar", category:"Renewable Energy", location:"Brasso Seco", description:"Community centre solar installation.", impact:"Operational", source:"GCCA+ (2023)" },
+        { title:"Brasso Venado Primary Solar", category:"Renewable Energy", location:"Brasso Venado", description:"Primary school solar installation.", impact:"Operational", source:"GCCA+ (2023)" },
+        { title:"CARINA Solar", category:"Renewable Energy", location:"CARINA", description:"Astronomy institute solar‑powered.", impact:"Operational", source:"GCCA+ (2024)" },
+        { title:"J C MacDonald Home Solar", category:"Renewable Energy", location:"J C MacDonald Home", description:"Elder care facility solar installation.", impact:"Operational", source:"GCCA+ (2023)" },
+        { title:"Nature Seekers Solar", category:"Renewable Energy", location:"Matura", description:"Community conservation group solar.", impact:"Operational", source:"GCCA+ / UNDP (2023)" },
+        { title:"Reptile Conservation Center Solar", category:"Renewable Energy", location:"Reptile Conservation Center", description:"Solar‑powered reptile conservation.", impact:"Operational", source:"GCCA+ (2024)" },
+        { title:"Speyside High School Solar", category:"Renewable Energy", location:"Speyside, Tobago", description:"High school solar installation.", impact:"Operational", source:"GCCA+ (2023)" },
+        { title:"Strong Ones Youth Club Solar", category:"Renewable Energy", location:"Strong Ones Youth Club", description:"Youth club solar (GCCA+ Phase 2).", impact:"Complete", source:"GCCA+ (2025)" },
+        { title:"THA Food Production Solar", category:"Renewable Energy", location:"Tobago", description:"THA agriculture division solar.", impact:"Operational", source:"GCCA+ (2024)" },
+        { title:"TT Red Cross Solar", category:"Renewable Energy", location:"TT Red Cross", description:"Red Cross facility solar installation.", impact:"Operational", source:"GCCA+ (2023)" },
+        { title:"Solar Water Heaters Expansion", category:"Energy Efficiency", location:"Nationwide", description:"Government expanding household solar water heaters.", impact:"Ongoing", source:"Min. Energy (2025)" },
+        { title:"Public Sector EV Transition", category:"Clean Transport", location:"Nationwide", description:"EV adoption in government ministries.", impact:"Ongoing", source:"Min. Public Admin (2025)" },
+        { title:"Cashew Gardens Recycling", category:"Waste Management", location:"Cashew Gardens", description:"Community‑led recycling, 600+ households, 5+ tonnes diverted.", impact:"Operational", source:"UNDP Equator Initiative (2023)" },
+        { title:"Cashew Gardens Composting", category:"Waste Management", location:"Cashew Gardens", description:"First community composting pilot, 490kg organic waste diverted.", impact:"Operational", source:"UNDP (2024)" },
+        { title:"SWMCOL Recycling Partnership", category:"Waste Management", location:"Nationwide", description:"National recycling with Cashew Gardens, ICARE.", impact:"Ongoing", source:"SWMCOL (2025)" },
+        { title:"Carib Glass Recycling Loop", category:"Waste Management", location:"Nationwide", description:"Glass remanufactured into new products.", impact:"Operational", source:"Carib Glass / EMA (2024)" },
+        { title:"BioResilience Project", category:"Nature-Based Solutions", location:"Caroni watershed", description:"US$3.5M GEF land restoration, soil carbon assessment.", impact:"Ongoing 2026‑2030", source:"GEF / UNDP (2025)" },
+        { title:"Caroni Riverbank Rehabilitation", category:"Ecosystem Restoration", location:"Caroni watershed", description:"Nature‑based riverbank restoration (BioResilience).", impact:"Ongoing", source:"BioResilience (2026)" },
+        { title:"National Soil Carbon Assessment", category:"Carbon Accounting", location:"Nationwide", description:"Land cover, carbon assessment & accounting.", impact:"Ongoing", source:"BioResilience / UWI (2026)" },
+        { title:"Nature‑Positive Agro‑Tourism", category:"Sustainable Tourism", location:"Various", description:"Promoting nature‑positive livelihoods.", impact:"Ongoing", source:"BioResilience (2026)" },
+        { title:"Grande Riviere Turtle Hatchery", category:"Biodiversity", location:"Grande Riviere", description:"Solar visitor centre supports leatherback conservation.", impact:"Operational", source:"EPIC (2023)" },
+        { title:"Pointe-à-Pierre Wild Fowl Trust", category:"Wetland Conservation", location:"Pointe-à-Pierre", description:"Solar at wetland conservation education centre.", impact:"Operational", source:"GCCA+ (2025)" },
+        { title:"Reptile Conservation Center TT", category:"Biodiversity", location:"Reptile Conservation Center", description:"Solar‑powered reptile conservation & education.", impact:"Operational", source:"GCCA+ (2024)" },
+        { title:"Nature Seekers", category:"Biodiversity", location:"Matura", description:"Solar‑powered leatherback monitoring.", impact:"Operational", source:"GCCA+ (2023)" },
+        { title:"FAO Climate‑Resilient Agriculture", category:"Sustainable Agriculture", location:"Various", description:"Protective agriculture, solar irrigation for smallholders.", impact:"Ongoing 2025‑2028", source:"FAO / Min. Agriculture (2025)" },
+        { title:"Solar Irrigation for Small Farmers", category:"Climate Adaptation", location:"Smallholder farms", description:"Demo project for women, youth, indigenous farmers.", impact:"Ongoing", source:"FAO (2025)" },
+        { title:"Agricultural Insurance Framework", category:"Climate Finance", location:"Nationwide", description:"Risk‑sharing instruments for farmer resilience.", impact:"In Development", source:"Min. Finance / CDB (2025)" },
+        { title:"Aquaculture Unit Solar", category:"Fisheries", location:"Fisheries Div.", description:"Solar at Fisheries Division (GCCA+).", impact:"Operational", source:"GCCA+ (2023)" },
+        { title:"THA Food Production Solar", category:"Agriculture", location:"Tobago", description:"THA agriculture division solar.", impact:"Operational", source:"THA / GCCA+ (2024)" },
+        { title:"Blue Technologies Awareness", category:"Blue Economy", location:"Nationwide", description:"Republic Bank‑IMA partnership for marine tech.", impact:"Ongoing", source:"Republic Bank (2025)" },
+        { title:"ECLAC‑IMA Ocean Seminar", category:"Policy/Education", location:"Arthur Lok Jack", description:"High‑level ocean climate seminar (Sept 2025).", impact:"Completed", source:"ECLAC (2025)" },
+        { title:"Republic Bank PMAD Marine", category:"Marine Conservation", location:"Nationwide", description:"Funding IMA marine outreach since 2019.", impact:"Ongoing", source:"Republic Bank (2025)" },
+        { title:"EPIC Grant Programme", category:"Community Development", location:"Various", description:"TT$8.8M invested in 160 community projects; Shell extension.", impact:"Ongoing", source:"Shell TT (2025)" },
+        { title:"Strong Ones Youth Club Solar", category:"Youth Development", location:"Strong Ones", description:"Youth club solar (GCCA+ Phase 2).", impact:"Complete", source:"GCCA+ (2025)" },
+        { title:"Brasso Seco Tourism Committee", category:"Community Tourism", location:"Brasso Seco", description:"Remote tourism group solar.", impact:"Operational", source:"GCCA+ (2023)" },
+        { title:"Brasso Seco Village Council CC", category:"Community Infrastructure", location:"Brasso Seco", description:"Community centre solar.", impact:"Operational", source:"GCCA+ (2023)" },
+        { title:"Brasso Venado Primary", category:"Education", location:"Brasso Venado", description:"Primary school solar.", impact:"Operational", source:"GCCA+ (2023)" },
+        { title:"CARINA", category:"Education/STEM", location:"CARINA", description:"Astronomy institute solar.", impact:"Operational", source:"GCCA+ (2024)" },
+        { title:"J C MacDonald Home", category:"Social Services", location:"J C MacDonald Home", description:"Elder care solar.", impact:"Operational", source:"GCCA+ (2023)" },
+        { title:"Fonrose Community Centre", category:"Community Infrastructure", location:"Fonrose, Tobago", description:"Tobago community centre solar (Phase 2).", impact:"Complete", source:"GCCA+ (2025)" },
+        { title:"Curepe Scherzando Steel Orchestra", category:"Cultural", location:"Curepe", description:"Panyard solar installation.", impact:"Complete", source:"GCCA+ (2025)" },
+        { title:"Draft Renewable Energy Policy", category:"Policy", location:"National", description:"Feed‑in Tariff policy with UNDP support.", impact:"Draft Complete", source:"Min. Energy / UNDP (2024)" },
+        { title:"National Adaptation Plan", category:"Policy", location:"National", description:"Climate integration into planning.", impact:"Ongoing", source:"Min. Planning (2025)" },
+        { title:"National Capital Accounting", category:"Policy", location:"National", description:"Roadmap for integrated policy (BioResilience).", impact:"Ongoing", source:"BioResilience (2026)" },
+        { title:"Green Hydrogen Exploration", category:"Emerging Tech", location:"National", description:"Exploring cleaner energy sources.", impact:"Exploratory", source:"Min. Energy (2025)" },
+        { title:"Carbon Market Strategy", category:"Carbon Offsets", location:"National", description:"Exploring carbon market participation.", impact:"Exploratory", source:"Min. Planning (2026)" },
+        { title:"GCCA+ Policy Support", category:"Policy", location:"Min. Energy", description:"Technical support for renewable policy.", impact:"Complete", source:"GCCA+ (2024)" },
+        { title:"UWI BioResilience Execution", category:"Academic", location:"UWI St Augustine", description:"UWI executing BioResilience.", impact:"Ongoing", source:"UWI / GEF (2026)" },
+        { title:"HADCO Trade Finance", category:"Green Finance", location:"National", description:"IDB Invest $10M for low‑carbon imports.", impact:"Operational", source:"IDB Invest (2025)" },
+        { title:"NGC Renewable Investment", category:"Corporate", location:"Couva", description:"30% stake in Brechin Castle.", impact:"Active", source:"NGC (2025)" },
+        { title:"bpTT Solar Investment", category:"Corporate", location:"Couva", description:"35% stake in Brechin Castle.", impact:"Active", source:"bpTT (2025)" },
+        { title:"Shell TT EPIC Co‑Funding", category:"Corporate", location:"Various", description:"TT$1.9M for community environmental projects.", impact:"Ongoing", source:"Shell TT (2023)" }
     ];
 
-    // ---------- 40 RESEARCH GAP PROJECTS ----------
+    // 40 GAP PROJECTS (no source)
     const gapProjects = [
-        ...Array.from({ length: 15 }, (_, i) => ({ title:`Corporate ESG Initiative #${i+1}`, category:"Research Gap: Corporate ESG", location:"Various companies", description:"Undocumented corporate sustainability program. Needs primary research.", impact:"Interview sustainability officers" })),
-        ...Array.from({ length: 10 }, (_, i) => ({ title:`Smallholder Climate‑Smart Adopter #${i+1}`, category:"Research Gap: Sustainable Agriculture", location:"Brasso Seco, Matura, Mayaro...", description:"FAO project mentions multiple adopters; details not public.", impact:"Field surveys required" })),
-        ...Array.from({ length: 5 }, (_, i) => ({ title:`Community Recycling Group #${i+1}`, category:"Research Gap: Waste Management", location:"Undocumented", description:"Potential replication of Cashew Gardens model; existence unknown.", impact:"Grassroots mapping" })),
-        ...Array.from({ length: 5 }, (_, i) => ({ title:`School Climate Action Program #${i+1}`, category:"Research Gap: Education", location:"Various schools", description:"Schools likely have gardening, recycling, or climate clubs – not documented.", impact:"Survey schools" })),
-        ...Array.from({ length: 3 }, (_, i) => ({ title:`Carbon Offset Pilot #${i+1}`, category:"Research Gap: Carbon Offsets", location:"TBD", description:"Government mentions carbon market exploration; pilots may have emerged.", impact:"Track announcements" })),
-        ...Array.from({ length: 2 }, (_, i) => ({ title:`Undocumented Tobago Initiative #${i+1}`, category:"Research Gap: Tobago", location:"Tobago", description:"Only three Tobago projects are listed; many more likely exist.", impact:"Collaborate with THA" }))
+        ...Array.from({ length: 15 }, (_, i) => ({ title:`Corporate ESG Initiative #${i+1}`, category:"Research Gap: Corporate ESG", location:"Various", description:"Undocumented corporate sustainability program. Needs primary research.", impact:"Interview officers", source:null })),
+        ...Array.from({ length: 10 }, (_, i) => ({ title:`Smallholder Climate‑Smart Adopter #${i+1}`, category:"Research Gap: Sustainable Agriculture", location:"Brasso Seco, Matura...", description:"FAO adopters not publicly documented.", impact:"Field surveys", source:null })),
+        ...Array.from({ length: 5 }, (_, i) => ({ title:`Community Recycling Group #${i+1}`, category:"Research Gap: Waste Management", location:"Undocumented", description:"Potential Cashew Gardens model replications.", impact:"Grassroots mapping", source:null })),
+        ...Array.from({ length: 5 }, (_, i) => ({ title:`School Climate Program #${i+1}`, category:"Research Gap: Education", location:"Various schools", description:"Undocumented school clubs/gardens.", impact:"Survey schools", source:null })),
+        ...Array.from({ length: 3 }, (_, i) => ({ title:`Carbon Offset Pilot #${i+1}`, category:"Research Gap: Carbon Offsets", location:"TBD", description:"Pilots may have emerged; not public.", impact:"Track announcements", source:null })),
+        ...Array.from({ length: 2 }, (_, i) => ({ title:`Undocumented Tobago Initiative #${i+1}`, category:"Research Gap: Tobago", location:"Tobago", description:"Likely more community initiatives.", impact:"Collaborate with THA", source:null }))
     ];
 
     const allProjects = [...realProjects, ...gapProjects].map((p, idx) => ({ ...p, id: idx + 1 }));
 
-    // ---------- UI state ----------
     let activeCategory = 'All';
     let searchTerm = '';
 
     const categories = ['All', ...new Set(allProjects.map(p => p.category))];
 
-    const filterContainer = document.getElementById('categoryFilters');
     function renderFilterButtons() {
-        filterContainer.innerHTML = '';
+        const container = document.getElementById('categoryFilters');
+        container.innerHTML = '';
         categories.forEach(cat => {
             const btn = document.createElement('button');
             btn.className = `filter-btn ${cat === activeCategory ? 'active' : ''}`;
-            btn.dataset.category = cat;
             btn.textContent = cat;
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -506,56 +474,63 @@
                 activeCategory = cat;
                 filterProjects();
             });
-            filterContainer.appendChild(btn);
+            container.appendChild(btn);
         });
     }
-
-    const grid = document.getElementById('projectsGrid');
-    const projectCountSpan = document.getElementById('projectCount');
 
     function filterProjects() {
         const term = searchTerm.toLowerCase().trim();
         const filtered = allProjects.filter(p => {
             if (activeCategory !== 'All' && p.category !== activeCategory) return false;
-            if (term === '') return true;
+            if (!term) return true;
             return p.title.toLowerCase().includes(term) ||
                    p.description.toLowerCase().includes(term) ||
                    p.location.toLowerCase().includes(term) ||
-                   p.category.toLowerCase().includes(term);
+                   (p.source && p.source.toLowerCase().includes(term));
         });
 
-        projectCountSpan.textContent = filtered.length;
+        document.getElementById('projectCount').textContent = filtered.length;
+        const grid = document.getElementById('projectsGrid');
 
-        if (filtered.length === 0) {
-            grid.innerHTML = `<div class="no-projects">🌧️ no projects match — refine your criteria</div>`;
+        if (!filtered.length) {
+            grid.innerHTML = '<div class="no-projects">🌧️ no projects match — refine</div>';
             return;
         }
 
-        let htmlStr = '';
+        let html = '';
         filtered.forEach(p => {
             const isGap = p.category.includes('Research Gap');
-            const gapClass = isGap ? 'gap' : '';
-            htmlStr += `
-                <div class="project-card ${gapClass}">
+            html += `
+                <div class="project-card ${isGap ? 'gap' : ''}">
                     <span class="card-category">${p.category}</span>
                     <div class="card-title">${p.title}</div>
                     <div class="card-location">${p.location}</div>
                     <div class="card-description">${p.description}</div>
                     <div class="card-impact">${p.impact}</div>
+                    ${p.source ? `<div class="card-source">${p.source}</div>` : ''}
                 </div>
             `;
         });
-        grid.innerHTML = htmlStr;
+        grid.innerHTML = html;
     }
 
-    // Search
-    const searchInput = document.getElementById('searchInput');
-    const searchBtn = document.getElementById('searchBtn');
-    searchBtn.addEventListener('click', () => { searchTerm = searchInput.value; filterProjects(); });
-    searchInput.addEventListener('keyup', (e) => { if (e.key === 'Enter') { searchTerm = searchInput.value; filterProjects(); } });
-    searchInput.addEventListener('input', () => {
+    // Event listeners
+    document.getElementById('searchBtn').addEventListener('click', () => {
+        searchTerm = document.getElementById('searchInput').value;
+        filterProjects();
+    });
+    document.getElementById('searchInput').addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') {
+            searchTerm = e.target.value;
+            filterProjects();
+        }
+    });
+    document.getElementById('searchInput').addEventListener('input', () => {
         clearTimeout(window.debTimer);
-        window.debTimer = setTimeout(() => { searchTerm = searchInput.value; filterProjects(); }, 200);
+        window.debTimer = setTimeout(() => {
+            searchTerm = document.getElementById('searchInput').value;
+            filterProjects();
+        }, 200);
     });
 
     renderFilterButtons();
